@@ -1,5 +1,6 @@
-# el usuario debe contener al menos 6 digitos
-# la contraseña debe tener al menos 8 digitos, una mayuscula, minuscula y un numero
+"-->REGISTRO"
+# El usuario debe contener al menos 6 digitos
+# La contraseña debe tener al menos 8 digitos, una mayuscula, minuscula y un numero
 
 def crea_usuario():
     while True:
@@ -52,12 +53,41 @@ def mostrar_usuario(persona):
     print("Usuario creado con éxito:")
     print(persona)
 
+persona = crea_usuario()
+mostrar_usuario(persona)
+
+"--> Almacenamiento de usuarios"
+
+def guardar_en_lista():
+    lista_usuarios = []
+    while True:
+        nuevo_usuario = crea_usuario()
+        lista_usuarios.append(nuevo_usuario)
+        opcion = input("¿Desea agregar otro usuario? (si/no): ")
+        if opcion.lower() != 'si':
+            break
+    return lista_usuarios
+
+def guardar_en_archivo(lista_usuarios):
+    with open("usuarios.txt", "w") as file:
+        for usuario in lista_usuarios:
+            file.write(f"{usuario['usuario']},{usuario['contraseña']}\n")
+
+def main():
+    print("Bienvenido al registro de usuarios y contraseñas.")
+    lista_usuarios = guardar_en_lista()
+    guardar_en_archivo(lista_usuarios)
+    print("Usuarios y contraseñas guardados en usuarios.txt.")
+
+
+
+"--> LOGIN"
+
+
 def guardar_en_txt(persona):
     with open("usuario.txt", "w") as archivo:
         archivo.write(f"Usuario: {persona['usuario']}\n")
         archivo.write(f"Contraseña: {persona['contraseña']}\n")
 
-
-persona = crea_usuario()
-mostrar_usuario(persona)
 guardar_en_txt(persona)
+
