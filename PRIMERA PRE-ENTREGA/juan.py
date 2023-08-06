@@ -1,6 +1,5 @@
-"-->REGISTRO"
-# El usuario debe contener al menos 6 digitos
-# La contraseña debe tener al menos 8 digitos, una mayuscula, minuscula y un numero
+# el usuario debe contener al menos 6 digitos
+# la contraseña debe tener al menos 8 digitos, una mayuscula, minuscula y un numero
 
 
 def verificar_cuenta():
