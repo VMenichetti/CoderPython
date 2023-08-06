@@ -1,52 +1,46 @@
-"-->REGISTRO"
-# El usuario debe contener al menos 6 digitos
-# La contraseña debe tener al menos 8 digitos, una mayuscula, minuscula y un numero
 
+import json
 
 def verificar_cuenta():
     try:
-        with open("Lista_de_usuarios.txt", "r") as file:
-            usuarios_registrados = set()
-            for line in file:
-                username, _ = line.strip().split(',')
-                usuarios_registrados.add(username)
+        with open("Lista_de_usuarios.json", "r") as file:
+            usuarios_registrados = json.load(file)
     except FileNotFoundError:
-        # Si el archivo no existe, lo creamos en blanco
-        with open("Lista_de_usuarios.txt", "w"):
-            pass
+        # Si el archivo no existe, inicializamos la lista de usuarios
+        usuarios_registrados = []
 
     while True:
         opcion = input("¿Tienes una cuenta registrada? (s/n): ")
         if opcion.lower() == 's':
-            iniciar_sesion()
+            iniciar_sesion(usuarios_registrados)
             break
         elif opcion.lower() == 'n':
             usuario_nuevo = crea_usuario()
-            with open("Lista_de_usuarios.txt", "a") as file:
-                file.write(f"{usuario_nuevo['usuario']},{usuario_nuevo['contraseña']}\n")
+            usuarios_registrados.append(usuario_nuevo)
+            guardar_en_archivo(usuarios_registrados)
             print("Usuario registrado exitosamente.")
-            iniciar_sesion()
+            iniciar_sesion(usuarios_registrados)
             break
         else:
             print("Opción inválida. Por favor, responda 's' o 'n'.")
 
-def iniciar_sesion():
+def iniciar_sesion(usuarios_registrados):
     while True:
         print("Bienvenido al login. ")
         usuario = input("Ingrese su nombre de usuario para login: ")
         contraseña = input("Ingrese su contraseña para login: ")
 
-        with open("Lista_de_usuarios.txt", "r") as file:
-            for line in file:
-                username, password = line.strip().split(',')
-                if username == usuario and password == contraseña:
-                    print("Inicio de sesión exitoso.")
-                    # opcion = input("¿Desesa ver la lista de usuarios? (s/n)")
-                    # if opcion.lower() == "s":
-                        
-                    return True
-
-        print("Usuario inexistente. Intente nuevamente.")
+        for usuario_info in usuarios_registrados:
+            if usuario_info["usuario"] == usuario and usuario_info["contraseña"] == contraseña:
+                print("Inicio de sesión exitoso.")
+                option = input("¿Desea ver la lista de usuarios? (s/n): ")
+                if option.lower()== "s":
+                    mostrar_archivo_json()
+                elif option.lower()== "n":
+                    print('Hasta luego.')
+                else: 
+                 print("Usuario inexistente o credenciales incorrectas. Intente nuevamente.")
+        break
 
 def crea_usuario():
     while True:
@@ -95,29 +89,19 @@ def valida_contraseña(contraseña):
     return tiene_mayuscula and tiene_minuscula and tiene_numero
 
 
-def guardar_en_lista():
-    lista_usuarios = []
-    while True:
-        nuevo_usuario = crea_usuario()
-        lista_usuarios.append(nuevo_usuario)
-        opcion = input("¿Desea agregar otro usuario? (s/n): ")
-        if opcion.lower() != 's':
-            break
-    return lista_usuarios
+def guardar_en_archivo(usuarios_registrados):
+    with open("Lista_de_usuarios.json", "w") as file:
+        json.dump(usuarios_registrados, file, indent=4)
 
-def guardar_en_archivo(lista_usuarios):
-    with open("Lista_de_usuarios.txt", "a") as file:
-        for usuario in lista_usuarios:
-            file.write(f"{usuario['usuario']},{usuario['contraseña']}\n")
-
-# def lista():
-#     print("Bienvenido al registro de usuarios y contraseñas.")
-    
-#     lista_usuarios = guardar_en_lista()
-#     guardar_en_archivo(lista_usuarios)
-#     print("Usuarios y contraseñas guardados en Lista_de_usuarios.txt.")
+def mostrar_archivo_json():
+    try:
+        with open("Lista_de_usuarios.json", "r") as file:
+            usuarios_registrados = json.load(file)
+            print("Contenido del archivo JSON:")
+            print(json.dumps(usuarios_registrados, indent=4))
+    except FileNotFoundError:
+        print("El archivo JSON no existe o está vacío.")
 
 if __name__ == "__main__":
     verificar_cuenta()
-#  iniciar_sesion()
-    # lista()
+    
