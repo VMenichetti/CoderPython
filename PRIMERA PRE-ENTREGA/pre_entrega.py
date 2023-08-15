@@ -73,19 +73,19 @@ def main():
 if __name__ == "__main__":
     main()
 
-# "--> LOGIN"
-# "# Utilizar otra función para el login de usuarios, comprobando que la contraseña coincida con el usuario"
-# "# Verificar que el usuario este registrado y darle el ok cuando ingrese datos almacenados"
-# "# Si no esta registrado, dar la opcion de volver a registro"
+"--> LOGIN"
+"# Utilizar otra función para el login de usuarios, comprobando que la contraseña coincida con el usuario"
+"# Verificar que el usuario este registrado y darle el ok cuando ingrese datos almacenados"
+"# Si no esta registrado, dar la opcion de volver a registro"
 
-# def login(usuarios):
-#     while True:
-#         usuario = input("Ingrese su nombre de usuario: ")
-#         contraseña = input("Ingrese su contraseña: ")
+def login(usuarios):
+    while True:
+        usuario = input("Ingrese su nombre de usuario: ")
+        contraseña = input("Ingrese su contraseña: ")
 
-#         for user in usuarios:
-#             if user['usuario'] == usuario and user['contraseña'] == contraseña:
-#                 print("¡Inicio de sesión exitoso!")
-#                 return
-#         print("Credenciales incorrectas. Inténtelo nuevamente.")
+        for user in usuarios:
+            if user['usuario'] == usuario and user['contraseña'] == contraseña:
+                print("¡Inicio de sesión exitoso!")
+                return
+        print("Credenciales incorrectas. Inténtelo nuevamente.")
 

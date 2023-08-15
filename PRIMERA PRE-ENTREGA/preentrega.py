@@ -38,7 +38,7 @@ def iniciar_sesion(usuarios_registrados):
                     mostrar_archivo_json()
                 elif option.lower()== "n":
                     print('Hasta luego.')
-                else: 
+            else: 
                  print("Usuario inexistente o credenciales incorrectas. Intente nuevamente.")
         break
 
