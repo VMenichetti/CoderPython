@@ -26,7 +26,7 @@ class Empleado(Persona):
         else:
             return f'Llegue {ingreso - self.horario} minutos tarde'
 
-class Seguridad(Empleado):
+class Seguridad():
 
     def __init__(self,nombre,apellido,edad,dni,sueldo,horario,vehiculo, arma):
         self.nombre=nombre

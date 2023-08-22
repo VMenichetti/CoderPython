@@ -1,11 +1,15 @@
-from paquete1.modulo1 import Cliente
-from paquete1.modulo2 import *
+from paquete1.modulo1 import *
+from paquete1.modulo2 import Cliente
 
-cliente1=Cliente("Juan","profe@coder.com",30,["tecnología","moda","farmacia"])
 
-"METODO COMPRAR"
-cliente1.comprar("Laptop","Walmart")
+# Crear instancias de clientes
+cliente1 = Cliente("Juan Pablo Menichetti", "jpmenichetti13@gmail.com", "Calle San Lorenzo 500", 1000)
+cliente2 = Cliente("Santiago Molina", "santimome@gmail.com", "El Cardenal 1250", 1500)
 
-"METODO STR"
+# Mostrar información de los clientes
+print(cliente1)
+print(cliente2)
 
-print(cliente1) #__str__
+# Realizar compras y agregar saldo
+print(cliente1.comprar(500))
+print(cliente2.agregar_saldo(200))
