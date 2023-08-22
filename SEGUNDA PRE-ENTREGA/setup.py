@@ -1,4 +1,6 @@
-setup(
+from setuptools import setup, find_packages
+
+setup (
     name = "SegundaPreEntrega_VMenichetti",
     version = "1.0",
     description = "Segunda Pre-entrega PYTHON - CODERHOUSE",
