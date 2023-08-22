@@ -1,5 +1,5 @@
-from paquete1.modulo1 import *
-from paquete1.modulo2 import Cliente
+from SegundaPreEntrega_VMenichetti.modulo1 import *
+from SegundaPreEntrega_VMenichetti.modulo2 import Cliente
 
 
 # Crear clientes

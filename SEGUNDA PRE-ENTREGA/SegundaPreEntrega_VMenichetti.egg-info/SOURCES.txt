@@ -1,0 +1,8 @@
+setup.py
+SegundaPreEntrega_VMenichetti/__init__.py
+SegundaPreEntrega_VMenichetti/modulo1.py
+SegundaPreEntrega_VMenichetti/modulo2.py
+SegundaPreEntrega_VMenichetti.egg-info/PKG-INFO
+SegundaPreEntrega_VMenichetti.egg-info/SOURCES.txt
+SegundaPreEntrega_VMenichetti.egg-info/dependency_links.txt
+SegundaPreEntrega_VMenichetti.egg-info/top_level.txt
